@@ -4,7 +4,8 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
-  basePath: process.env.NODE_ENV === "production" ? "/enkiduv-portfolio" : "",
+  basePath: process.env.NODE_ENV === "production" ? "/Enkiduv" : "",
+  assetPrefix: process.env.NODE_ENV === "production" ? "/Enkiduv/" : "",
   trailingSlash: true,
 };
 

@@ -78,6 +78,7 @@ html {
   background: linear-gradient(to bottom, #4f46e5, #9333ea);
   border-radius: 5px;
 }
+
 .bg-grid-white {
   background-image: linear-gradient(
       to right,
@@ -85,4 +86,21 @@ html {
       transparent 1px
     ),
     linear-gradient(to bottom, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.animate-gradient {
+  background-size: 200% auto;
+  animation: gradient 5s ease infinite;
 }
