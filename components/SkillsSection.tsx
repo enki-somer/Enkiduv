@@ -26,7 +26,10 @@ const skillCategories = [
 
 export default function SkillsSection() {
   return (
-    <section className="min-h-screen py-20 bg-black relative overflow-hidden">
+    <section
+      id="skills"
+      className="min-h-screen py-20 bg-black relative overflow-hidden"
+    >
       {/* Animated Background */}
       <div className="absolute inset-0">
         <div className="absolute inset-0 bg-[radial-gradient(circle_800px_at_50%_-100%,#3b82f6,transparent)]" />

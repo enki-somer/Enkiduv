@@ -92,7 +92,10 @@ export default function ProjectsSection() {
   );
 
   return (
-    <section className="py-20 bg-gradient-to-b from-gray-900 to-black">
+    <section
+      id="projects"
+      className="py-20 bg-gradient-to-b from-gray-900 to-black"
+    >
       <div className="container mx-auto px-4">
         <motion.h2
           initial={{ opacity: 0 }}

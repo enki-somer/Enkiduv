@@ -37,8 +37,28 @@ export default function HeroSection() {
     return () => window.removeEventListener("mousemove", handleMouseMove);
   }, []);
 
+  const handleSectionClick = (
+    e: React.MouseEvent<HTMLAnchorElement>,
+    href: string
+  ) => {
+    e.preventDefault();
+    const targetId = href.replace("#", "");
+    const element = document.getElementById(targetId);
+    if (element) {
+      const navHeight = 80;
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - navHeight;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth",
+      });
+    }
+  };
+
   return (
     <section
+      id="home"
       ref={containerRef}
       className="relative min-h-screen w-full flex flex-col items-center justify-center overflow-hidden bg-black"
     >
@@ -160,6 +180,7 @@ export default function HeroSection() {
           >
             <motion.a
               href="#projects"
+              onClick={(e) => handleSectionClick(e, "#projects")}
               className="group relative px-8 py-4 w-full md:w-auto overflow-hidden rounded-full bg-white/5 backdrop-blur-md border border-white/10 hover:bg-white/10 transition-colors"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
@@ -186,6 +207,7 @@ export default function HeroSection() {
 
             <motion.a
               href="#contact"
+              onClick={(e) => handleSectionClick(e, "#contact")}
               className="group relative px-8 py-4 w-full md:w-auto overflow-hidden rounded-full bg-gradient-to-r from-blue-500 to-purple-500 hover:opacity-90 transition-opacity"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}

@@ -15,9 +15,38 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const handleNavClick = (
+    e: React.MouseEvent<HTMLAnchorElement>,
+    href: string
+  ) => {
+    e.preventDefault();
+    const targetId = href.replace("#", "");
+
+    if (targetId === "home") {
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth",
+      });
+    } else {
+      const element = document.getElementById(targetId);
+      if (element) {
+        const navHeight = 80; // Height of the fixed navbar
+        const elementPosition = element.getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.pageYOffset - navHeight;
+
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: "smooth",
+        });
+      }
+    }
+    setIsOpen(false); // Close mobile menu if open
+  };
+
   const navItems = [
     { name: "Home", href: "#home" },
     { name: "About", href: "#about" },
+    { name: "Skills", href: "#skills" },
     { name: "Projects", href: "#projects" },
     { name: "Contact", href: "#contact" },
   ];
@@ -46,6 +75,7 @@ export default function Navbar() {
               <Link
                 key={item.name}
                 href={item.href}
+                onClick={(e) => handleNavClick(e, item.href)}
                 className="text-gray-300 hover:text-white transition-colors relative group"
               >
                 {item.name}
@@ -95,8 +125,8 @@ export default function Navbar() {
               <Link
                 key={item.name}
                 href={item.href}
+                onClick={(e) => handleNavClick(e, item.href)}
                 className="block py-2 text-gray-300 hover:text-white transition-colors"
-                onClick={() => setIsOpen(false)}
               >
                 {item.name}
               </Link>
